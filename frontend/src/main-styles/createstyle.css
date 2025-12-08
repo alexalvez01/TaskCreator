@@ -1,0 +1,126 @@
+.create_container{
+    max-width: 100%;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-size: 20px;
+    background-color: #d4d1d1;
+    color: #131313;
+    transition: background .4s, color .4s;
+    background-image:linear-gradient(#0004,rgba(0, 0, 0, 0.507)),url(/images/create-background.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+
+.text_create_container{
+    min-width: 100%;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+    color: #c4c4c4;
+    gap: 40px;
+}
+.text_create_container_dark{
+    background-color: transparent;
+    transition: background .4s, color .4s;
+}
+
+.create_text{
+    padding: 10px 0;
+    font-weight: 900;
+}
+.create_button{
+    padding: 25px 0;
+    height: 80px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 550;
+    background-color: transparent;
+    border: none;
+    border: 2px solid #1e1e1e99;
+    color: #eee9e9;
+    min-width: 150px;
+    border-radius: 5px;
+    transition: background .4s,font-size .4s;
+    position: relative;
+    z-index: 20;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.create_button::before{
+    content: "";
+    background-color: #1e1e1e99;
+    border-radius: 100%;
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    margin: auto;
+    justify-self: center;
+    top: 0;
+    bottom: 0;
+    display: none;
+    z-index: -1;
+    
+}
+.create_button:hover{
+    font-size: 20px;
+}
+.create_button:hover::before{
+    display: block;
+    animation: button_animation .3s ease-in 1 forwards;  
+}
+.create_button_dark{
+    border: 2px solid #1e1e1e99;
+}
+.dark_button:hover{
+    color: #131313;
+}
+
+
+@media screen and (max-width:1200px) {
+
+    .create_container{
+        flex-flow: column nowrap;
+        animation: none;
+    }
+
+    .text_create_container{
+        min-width: 100%;
+        flex-basis: 300px;
+    }
+}
+
+
+
+@media screen and (max-width:720px) {
+    .create_button{
+        font-size: 14px;
+    }
+}
+
+
+
+@keyframes button_animation {
+    0%{
+        width: 50%;
+        height: 70%;
+    }
+    50%{
+        width: 90%;
+        height: 130%;
+    }
+    100%{
+        width: 150%;
+        height: 200%;
+    }
+}

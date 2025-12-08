@@ -1,0 +1,22 @@
+.task_header_container .nav_white{
+  background-color: #fff;
+  color: #000;
+}
+.task_header_container .nav_dark{
+  background-color: #413e42d8;
+  color: #ffffff;
+}
+
+.task_header_container .nav_scrolled_white {
+    background-color: #eeeeeec4;
+}
+.task_header_container .nav_scrolled_dark {
+    background-color:  rgba(17, 17, 17, 0.493);
+}
+.task_header_container .nav_item:nth-child(3) {
+  display: none;
+}
+
+.task_header_container .login_button {
+  display: none;
+}

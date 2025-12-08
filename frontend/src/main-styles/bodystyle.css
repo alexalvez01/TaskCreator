@@ -1,0 +1,20 @@
+.main {
+    background-color: #c7c7c7;
+    font-family: "Rubik",sans-serif;
+    color: #131313;
+    transition: background .4s, color .4s;
+}
+
+.main_dark {
+    background-color: #131313;
+    font-family: "Rubik",sans-serif;
+    color: #c4c4c4;
+    transition: background .4s, color .4s;
+}
+
+@media screen and (max-width:720px) {
+ 
+    *{
+        font-size: 18px ;
+    }
+}
