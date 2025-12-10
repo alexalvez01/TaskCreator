@@ -1,49 +1,39 @@
-# TaskCreator – Gestor de tareas
+# TaskCreator – Gestor de Tareas
 
-TaskCreator es una aplicación que permite crear, marcar y borrar tareas de manera sencilla.
-Incluye un sistema de registro y login para que cada usuario vea solo sus propias tareas y una interfaz dinámica y sencilla.
+TaskCreator es una aplicación que permite crear, marcar y borrar tareas de manera sencilla.  
+Incluye un sistema de registro y login para que cada usuario vea solo sus propias tareas, junto con una interfaz dinámica y fácil de usar.
+
+---
 
 ## Características principales
 
-Crear tareas con título y descripción
+- Crear tareas con título y descripción  
+- Marcar tareas como completadas  
+- Eliminar tareas  
+- Registro de usuarios  
+- Inicio de sesión con cookies de autenticación  
+- Cierre de sesión  
+- Modo oscuro  
+- Funcionamiento completo dentro de un entorno **Docker**
 
-Marcar tareas como completadas
-
-Eliminar tareas
-
-Registro de usuarios
-
-Inicio de sesión con cookies de autenticación
-
-Cierre de sesión
-
-Modo oscuro
-
-Todo funciona dentro de un entorno Docker
+---
 
 ## Tecnologías utilizadas
-Frontend
 
-React
+### **Frontend**
+- React  
+- Vite  
+- Context API para manejar usuario y tareas  
+- Fetch para comunicar con el backend  
 
-Vite
+### **Backend**
+- Node.js + Express  
+- Sequelize  
+- PostgreSQL  
+- JWT + Cookies (autenticación con sesiones seguras)
 
-Context API para manejar el usuario y las tareas
+### **Infraestructura**
+- Docker  
+- Docker Compose  
 
-Fetch para conectarse con el backend
 
-Backend
-
-Node.js + Express
-
-Sequelize
-
-Base de datos PostgreSQL
-
-JWT + Cookies para manejar sesiones
-
-Infraestructura
-
-Docker
-
-Docker Compose
