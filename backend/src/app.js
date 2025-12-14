@@ -3,7 +3,8 @@ import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import {router as authRoutes} from "./routes/auth.routes.js";
+import {authRoutes} from "./routes/auth.routes.js";
+import {taskRoutes} from "./routes/task.routes.js";
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(
 
 // RUTAS
 app.use("/auth", authRoutes);
+app.use("/tasks", taskRoutes);
 
 
 export default app;

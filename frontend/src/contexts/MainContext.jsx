@@ -3,10 +3,17 @@ import { createContext, useState, useEffect } from "react";
 export const MainContext = createContext();
 
 export function MainContextProvider({ children }) {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+  return localStorage.getItem("isDark") === "true";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("isDark", isDark);
+  }, [isDark]);
+  
   const [isModalWindow, setModalWindow] = useState(false);
 
-  const [isRegisterMode, setIsRegisterMode] = useState(false); // 🔥 NUEVO
+  const [isRegisterMode, setIsRegisterMode] = useState(false); 
 
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);

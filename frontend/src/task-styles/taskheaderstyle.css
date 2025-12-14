@@ -1,3 +1,22 @@
+.username {
+  font-size: 16px;
+  font-weight: 600;
+  color: #292929;
+}
+.logout_button {
+  color: #292929;
+  border: 2px solid #292929;
+}
+.task_header_container .nav_dark .logout_button{
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.task_header_container .nav_dark .logout_button:hover{
+  color: #000000;
+  background-color: #d4d4d4;
+  border: 2px solid #d4d4d4;
+}
 .task_header_container .nav_white{
   background-color: #fff;
   color: #000;

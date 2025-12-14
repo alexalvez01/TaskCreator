@@ -1,13 +1,16 @@
-
-.task_main{
-    background: #e7e6e6;
-    font-family: "Rubik",sans-serif;
-    color: #131313;
-    height: 100%;
-    width: 100%;
-    transition: background .4s, color .4s;
+.task_main {
+  background: #e7e6e6;
+  font-family: "Rubik", sans-serif;
+  color: #131313;
+  min-height: 100vh;
+  width: 100%;
+  transition: background 0.4s, color 0.4s;
 }
 
-.task_main_dark{
-    background: radial-gradient( #1f1f27, #19181a);
+.task_main_dark {
+  background: radial-gradient(#1f1f27, #19181a);
+}
+
+.task_main > * {
+  width: 100%;
 }
