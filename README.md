@@ -47,9 +47,8 @@ Cada usuario solo puede ver y modificar sus tareas.
 ## Estructura del proyecto
 
 taskcreator/
-│
-├── frontend/ # Aplicación React
-├── backend/ # API REST
-├── docker-compose.yml
-└── README.md
+-frontend/ # Aplicación React
+-backend/ # API REST
+-docker-compose.yml
+-README.md
 
