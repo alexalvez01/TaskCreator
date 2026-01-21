@@ -4,10 +4,15 @@ import {MainContext} from '../../contexts/MainContext'
 import { useNavigate } from "react-router-dom";
 
 function Create() {
-  const {isDark}= useContext(MainContext)
+  const {isDark, user}= useContext(MainContext)
   const navigate = useNavigate();
 
   const handleCreateClick = () => {
+    if (!user) {
+    alert("Necesitás iniciar sesión para crear tareas");
+    return;
+    }
+
     navigate("/tasks"); 
   };
   return (
