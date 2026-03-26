@@ -1,48 +1,38 @@
 import "../../main-styles/aboutstyle.css";
-import {useContext, useEffect} from 'react'
+import {useContext, useEffect, useRef, useState} from 'react'
 import {MainContext} from '../../contexts/MainContext'
 
 
 function About() {
 
   const {isDark}=useContext(MainContext)
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef(null)
 
   useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const [entry] = entries;
+      if (entry.isIntersecting) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
+    }, { threshold: 0.4, rootMargin: '0px 0px -50px 0px' })
 
-    var about_text = document.querySelector('.about_text');
-    var about_img = document.querySelector('.about_image_container');
-    var about_container = document.querySelector('.about_container');
-
-
-    const handleScroll= ()=> {
-        var scrollTop = window.scrollY || document.documentElement.scrollTop;
-        var aboutContainerPosition = about_container.offsetTop;
-
-
-    
-        if (scrollTop > aboutContainerPosition - window.innerHeight / 1.8) {
-
-                about_text.classList.add("show")
-                about_img.classList.add("show")
-    
-        }else {
-                about_text.classList.remove("show")
-                about_img.classList.remove("show")
-                }
-  
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
     }
-
-
-    window.addEventListener('scroll', handleScroll);
+    
+    return () => observer.disconnect()
   },[])
   
   return (
-    <div className={isDark?"about_container about_dark":"about_container"} id="about">
-      <div className="about_text">
+    <div className={isDark?"about_container about_dark":"about_container"} id="about" ref={containerRef}>
+      <div className={`about_text ${isVisible ? 'show' : ''}`}>
         <h2>Organize your team's task list and increase productivity</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus corrupti facere vel sit earum laborum id nisi non? Expedita aperiam accusantium, facilis accusamus aliquam aut ullam quibusdam ipsum impedit excepturi!</p>
       </div>
-      <div className={isDark?"about_image_container about_image_container_dark":"about_image_container"}>
+      <div className={`${isDark?"about_image_container about_image_container_dark":"about_image_container"} ${isVisible ? 'show' : ''}`}>
         <img src="/images/page.png" alt="" />
       </div>
 

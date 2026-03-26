@@ -1,14 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../main-styles/headerstyle.css";
 import { MainContext } from "../contexts/MainContext";
-import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon, faBars, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-
 
 function Header() {
   const { isDark, setIsDark, isModalWindow, setModalWindow, user, logoutUser } =
     useContext(MainContext);
+    
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleChange = () => {
     setIsDark(!isDark);
@@ -34,33 +34,21 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const nav = document.querySelector("nav");
-
       if (window.matchMedia("(min-width: 720px)").matches) {
         if (window.scrollY > 50) {
-          if (isDark) {
-            nav.classList.add("nav_scrolled_dark");
-            nav.classList.remove("nav_scrolled_white");
-          } else {
-            nav.classList.add("nav_scrolled_white");
-            nav.classList.remove("nav_scrolled_dark");
-          }
+          setIsScrolled(true);
         } else {
-          if (isDark) {
-            nav.classList.remove("nav_scrolled_dark");
-          } else {
-            nav.classList.remove("nav_scrolled_white");
-          }
+          setIsScrolled(false);
         }
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isDark]);
+  }, []);
 
   return (
     <header>
@@ -77,7 +65,7 @@ function Header() {
         </button>
       </div>
 
-      <nav className={isDark ? "nav_white nav_dark" : "nav_white"}>
+      <nav className={`${isDark ? "nav_white nav_dark" : "nav_white"} ${isScrolled ? (isDark ? "nav_scrolled_dark" : "nav_scrolled_white") : ""}`}>
         <div className="nav_container_list">
           <div className="nav_list">
             <a href="/" className="nav_item">

@@ -14,14 +14,12 @@ html {
     font-weight: 550;
     width: 100%;
     box-sizing: border-box;
-    transition: background .4s, color.4s;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out;
     z-index: 10;
-    
-
 }
 .nav_dark{
     color: #c4c4c4;
-    transition: background .4s, color.4s;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out;
 }
 .nav_white:not(.nav_scrolled_white, .nav_scrolled_dark){
     color: #c4c4c4;
@@ -30,13 +28,15 @@ html {
     color: rgb(226, 225, 225);
 }
 .nav_scrolled_white {
-    background-color: #eee9e9;
-    
+    background-color: rgba(238, 233, 233, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
 .nav_scrolled_dark {
-    background-color: #111111;
-
+    background-color: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 .nav_scrolled_white .nav_item{
     color: #505050

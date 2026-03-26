@@ -25,18 +25,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform .4s, opacity .4s;
-    animation: cards_movement ease-in backwards;
-    view-timeline: --card block;
-    animation-timeline: --card;
-    animation-range: cover 10% cover 30%;
-
-
+    opacity: 0;
+}
+.text_container.visible{
+    animation: slideUp 0.6s ease-out forwards;
 }
 .text_container h2{
     font-weight: 900;
     text-wrap: balance;
-
 }
 .card_container{
     background-color: transparent;
@@ -62,12 +58,16 @@
     padding: 10px 10px;
     border-radius: 6px;
     box-shadow: 0 0 15px #0003;
-    transition: background .4s, color .4s, transform .4s, opacity .4s, scale .4s;
-    animation: cards_movement ease-in backwards;
-    view-timeline: --card block;
-    animation-timeline: --card;
-    animation-range: cover 10% cover 30%;
+    transition: background .4s, color .4s, scale .4s;
+    opacity: 0;
 }
+.card.visible {
+    animation: slideUp 0.6s ease-out forwards;
+}
+.card:nth-child(1).visible { animation-delay: 0.1s; }
+.card:nth-child(2).visible { animation-delay: 0.25s; }
+.card:nth-child(3).visible { animation-delay: 0.4s; }
+
 .card_dark{
     background-color: #1e1e1e;
     color: #c4c4c4;
@@ -164,25 +164,13 @@
 
 
 
-@keyframes cards_movement {
-    0%{
-        transform: translateY(70px);
+@keyframes slideUp {
+    0% {
         opacity: 0;
-    }
-    30%{
         transform: translateY(50px);
-        opacity: 0.3;
     }
-    50%{
-        transform: translateY(30px);
-        opacity: 0.6;
-    }
-    70%{
-        transform: translateY(10px);
-        opacity: 0.9;
-    }
-    70%{
-        transform: translateY(0px);
+    100% {
         opacity: 1;
+        transform: translateY(0);
     }
 }

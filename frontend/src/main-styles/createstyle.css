@@ -124,3 +124,35 @@
         height: 200%;
     }
 }
+
+.custom_notification {
+    position: fixed;
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #eee9e9;
+    color: #1e1e1e;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    z-index: 1000;
+    animation: toast_slide_in 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.custom_notification_dark {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+}
+
+@keyframes toast_slide_in {
+    0% {
+        top: 0px;
+        opacity: 0;
+    }
+    100% {
+        top: 90px;
+        opacity: 1;
+    }
+}
