@@ -2,7 +2,7 @@ import "../../main-styles/homestyle.css";
 
 function Home() {
   return (
-    <div className="home_container">
+    <div id="home" className="home_container">
       <div className="aurora_container">
         <div className="aurora aurora_1"></div>
         <div className="aurora aurora_2"></div>

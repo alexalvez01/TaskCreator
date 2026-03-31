@@ -24,25 +24,37 @@ function ModalWindow() {
         password: ""
     });
 
+    const [error, setError] = useState("");
+
     const handleCloseButton = () => {
         setModalWindow(false);
+        setError("");
     };
 
     const handleSwitchForm = () => {
         setIsRegisterMode(!isRegisterMode);
+        setError("");
     };
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        await loginUser(loginForm);
+        setError("");
+        const data = await loginUser(loginForm);
+        if (!data.user) {
+            setError(data.message || "Error during login");
+        }
     };
 
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
-        await registerUser(registerForm);
+        setError("");
+        const data = await registerUser(registerForm);
+        if (!data.user) {
+            setError(data.message || "Error during registration");
+        }
     };
 
-    return (
+    return isModalWindow ? (
         <dialog open={isModalWindow} className='modal'>
             <div className={isDark ? "modal_container dark_container" : "modal_container"}>
 
@@ -74,6 +86,8 @@ function ModalWindow() {
                                         setLoginForm({ ...loginForm, password: e.target.value })
                                     }
                                 />
+
+                                {error && <p className="form_error_msg">{error}</p>}
 
                                 <button type="submit" className={isDark ? "form_button dark_button" : "form_button"}>
                                     Login
@@ -130,6 +144,8 @@ function ModalWindow() {
                                     }
                                 />
 
+                                {error && <p className="form_error_msg">{error}</p>}
+
                                 <button type="submit" className={isDark ? "form_button dark_button" : "form_button"}>
                                     Register
                                 </button>
@@ -147,7 +163,7 @@ function ModalWindow() {
 
             </div>
         </dialog>
-    )
+    ) : null
 }
 
 export default ModalWindow

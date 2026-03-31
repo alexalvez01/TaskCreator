@@ -19,11 +19,12 @@ export const getTasks = async (req, res) => {
 
 export const createTask = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, deadline } = req.body;
 
     const newTask = await Task.create({
       title,
       description,
+      deadline,
       userId: req.user.id
     });
 

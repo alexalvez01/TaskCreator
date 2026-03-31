@@ -33,6 +33,8 @@ export function MainContextProvider({ children }) {
     if (res.ok) {
       setUser(data.user);
       setModalWindow(false);
+    } else {
+      console.error("Registration error:", data.message || data.error);
     }
 
     return data;
@@ -52,6 +54,8 @@ export function MainContextProvider({ children }) {
       setUser(data.user);
       await loadTasks();
       setModalWindow(false);
+    } else {
+      console.error("Login error:", data.message || data.error);
     }
 
     return data;
@@ -99,12 +103,12 @@ export function MainContextProvider({ children }) {
     setTasks(data);
   };
 
-  const createTask = async ({ title, description }) => {
+  const createTask = async ({ title, description, deadline }) => {
     const res = await fetch(`${API}/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ title, description }),
+      body: JSON.stringify({ title, description, deadline }),
     });
 
     const newTask = await res.json();

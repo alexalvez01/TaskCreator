@@ -1,26 +1,25 @@
-import app from "./app.js";
-import { sequelize } from "./config/database.js";
+import app from "./app.js"; 
+import {sequelize} from "./config/database.js"; 
 
+const PORT = 3000;
 
-import "./models/User.js";
-import "./models/Task.js";
-
-const PORT = process.env.PORT || 3000;
-
-async function main() {
+async function startServer() {
   try {
     await sequelize.authenticate();
-    console.log("Conexión a PostgreSQL exitosa");
+    console.log("DB conectada");
 
     await sequelize.sync({ alter: true });
-    console.log("Modelos sincronizados");
+    console.log("Tablas sincronizadas");
 
     app.listen(PORT, () => {
-      console.log(`Servidor escuchando en puerto ${PORT}`);
+      console.log(`Servidor corriendo en puerto ${PORT}`);
     });
+
   } catch (error) {
-    console.error("Error al iniciar el servidor:", error);
+    console.error("Error conectando a DB, reintentando...", error.message);
+
+    setTimeout(startServer, 5000); 
   }
 }
 
-main();
+startServer();

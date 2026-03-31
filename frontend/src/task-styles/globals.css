@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors - Light Mode */
+  --primary: hsl(250, 84%, 60%);
+  --primary-hover: hsl(250, 84%, 50%);
+  --bg-light: hsl(220, 33%, 98%);
+  --card-light: rgba(255, 255, 255, 0.7);
+  --text-light: hsl(220, 20%, 20%);
+  --text-muted-light: hsl(220, 10%, 45%);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  
+  /* Colors - Dark Mode */
+  --bg-dark: hsl(220, 40%, 10%);
+  --card-dark: rgba(30, 41, 59, 0.6);
+  --text-dark: hsl(210, 40%, 98%);
+  --text-muted-dark: hsl(215, 25%, 70%);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+
+  /* Status Colors */
+  --success: hsl(142, 70%, 45%);
+  --warning: hsl(38, 92%, 50%);
+  --danger: hsl(0, 84%, 60%);
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-premium: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.4s ease;
+}
+
+.glass-morphism {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-premium);
+}
+
+.glass-morphism-dark {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border-dark);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}

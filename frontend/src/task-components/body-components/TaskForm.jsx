@@ -3,15 +3,14 @@ import { MainContext } from "../../contexts/MainContext";
 import { useContext } from "react";
 import {useState} from 'react'
 
-function TaskForm() {
-  const {createTask} = useContext(MainContext);
-  const {isDark}=useContext(MainContext)
+function TaskForm({ close }) {
+  const {createTask, isDark} = useContext(MainContext);
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
+  const [deadline, setDeadline] = useState("")
   const [errorMsg, setErrorMsg] = useState("");
-  
 
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (title.trim() === "" || description.trim() === "") {
@@ -22,33 +21,63 @@ function TaskForm() {
     createTask({
       title,
       description,
+      deadline
     });
+    
     setTitle("");
     setDescription("");
+    setDeadline("");
     setErrorMsg("");
+    close();
   };
-   return (
-    <div className="taskform_container">
-      <form onSubmit={handleSubmit} className={isDark?"task_form task_form_dark":"task_form"}>
-        <h2>Tasks</h2>
 
-        <input
-          placeholder="Write the task title"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-          className={isDark?"task_form_input task_form_input_dark":"task_form_input"}
-        />
-        <textarea
-          placeholder="Write the task description"
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-          className={isDark?"task_form_input task_form_input_dark":"task_form_input"}
-        ></textarea>
+  return (
+    <div className={isDark ? "task_form_modal dark" : "task_form_modal"}>
+      <div className="form_header">
+        <h2>New Task</h2>
+        <button className="close_btn" onClick={close}>&times;</button>
+      </div>
+      
+      <form onSubmit={handleSubmit} className="task_form_content">
+        <div className="input_group">
+          <label>TITLE</label>
+          <input
+            placeholder="What needs to be done?"
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+            className="task_input"
+            autoFocus
+          />
+        </div>
+
+        <div className="input_group">
+          <label>DESCRIPTION</label>
+          <textarea
+            placeholder="Add some details..."
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            className="task_input"
+          ></textarea>
+        </div>
+
+        <div className="input_group">
+          <label>DEADLINE</label>
+          <input
+            type="date"
+            onChange={(e) => setDeadline(e.target.value)}
+            value={deadline}
+            className="task_input"
+          />
+        </div>
+
         {errorMsg && (
-          <p style={{ color: "red", marginBottom: "10px", fontSize: "15px" }}>{errorMsg}</p>
+          <p className="error_msg">{errorMsg}</p>
         )}
 
-        <button className={isDark?"save_button save_button_dark":"save_button"}>Save</button>
+        <div className="form_actions">
+          <button type="button" className="cancel_btn" onClick={close}>Discard</button>
+          <button type="submit" className="save_button">Create Task</button>
+        </div>
       </form>
     </div>
   );

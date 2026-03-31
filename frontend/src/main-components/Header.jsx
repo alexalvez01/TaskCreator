@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "../main-styles/headerstyle.css";
+import { Link } from "react-router-dom";
 import { MainContext } from "../contexts/MainContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon, faBars, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
@@ -50,6 +51,33 @@ function Header() {
     };
   }, []);
 
+  const handleAboutClick = (e) => {
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+      e.preventDefault();
+      const element = document.getElementById('about');
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.offsetTop;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+  };
+
+  const handleHomeClick = (e) => {
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <header>
       <div className="nav_responsive_button_container">
@@ -68,15 +96,15 @@ function Header() {
       <nav className={`${isDark ? "nav_white nav_dark" : "nav_white"} ${isScrolled ? (isDark ? "nav_scrolled_dark" : "nav_scrolled_white") : ""}`}>
         <div className="nav_container_list">
           <div className="nav_list">
-            <a href="/" className="nav_item">
+            <Link to="/" className="nav_item" onClick={handleHomeClick}>
               Home
-            </a>
-            <a href="/#about" className="nav_item">
+            </Link>
+            <Link to="/#about" className="nav_item" onClick={handleAboutClick}>
               About
-            </a>
-            <a href="/#create" className="nav_item">
+            </Link>
+            <Link to="/tasks" className="nav_item">
               Start
-            </a>
+            </Link>
           </div>
 
           <div className="nav_container_button">

@@ -1,16 +1,142 @@
 .task_main {
-  background: #e7e6e6;
-  font-family: "Rubik", sans-serif;
-  color: #131313;
   min-height: 100vh;
-  width: 100%;
-  transition: background 0.4s, color 0.4s;
+  background-color: var(--bg-light);
+  padding: 120px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: var(--transition-smooth);
 }
 
 .task_main_dark {
-  background: radial-gradient(#1f1f27, #19181a);
+  background-color: var(--bg-dark);
 }
 
-.task_main > * {
+.task_view_container {
   width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.task_controls_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task_view_title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-light);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.task_main_dark .task_view_title {
+  color: var(--text-dark);
+}
+
+.task_header_actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.back_home_btn {
+  background: transparent;
+  padding: 12px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted-light);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.task_main_dark .back_home_btn {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted-dark);
+}
+
+.back_home_btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-light);
+  transform: translateX(-4px);
+}
+
+.task_main_dark .back_home_btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-dark);
+}
+
+.add_task_btn_primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.add_task_btn_primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.plus_icon {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+/* Modal Styles */
+.modern_modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modern_modal_content {
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow-premium);
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modern_modal_content.dark {
+  background: hsl(222, 47%, 11%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }

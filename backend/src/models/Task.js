@@ -15,6 +15,11 @@ export const Task = sequelize.define("Task", {
   completed: {
     type: DataTypes.BOOLEAN,
     defaultValue: false
+  },
+
+  deadline: {
+    type: DataTypes.DATE,
+    allowNull: true
   }
 });
 

@@ -37,21 +37,21 @@ function Cards() {
               <h3 className='card_title'>Organize your task list</h3>
               <img src="/images/tasklist.png" alt="task list" className='card_icon' />
             </div>
-            <p className='card_text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi debitis vero ex rem illo, in iusto voluptas pariatur, amet quasi eaque ipsum tempore atque deserunt, incidunt quam repudiandae possimus et.</p>
+            <p className='card_text'>Keep your to-dos under control with our intuitive interface. Classify, edit, and manage your daily tasks efficiently in one place.</p>
         </div>
         <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "")}>
             <div className='card_header'>
               <h3 className='card_title'>Add details to each task</h3>
               <img src="/images/details.png" alt="written book" className='card_icon' />
             </div>
-            <p className='card_text'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum esse nihil cupiditate voluptatem ipsa similique? Nam eum incidunt temporibus qui, fugit fuga, quas iure cupiditate ratione praesentium ducimus odio doloremque!</p>
+            <p className='card_text'>Never lose sight of important information. Add notes and detailed descriptions to every task to ensure perfect results for your projects.</p>
         </div>
         <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "")}>
             <div className='card_header'>
-              <h3 className='card_title'>Set a certain time</h3>
+              <h3 className='card_title'>Manage your deadlines</h3>
               <img src="/images/time-date.png" alt="the date on the calendary" className='card_icon' />
             </div>
-            <p className='card_text'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti in consectetur tempora rerum reiciendis repudiandae. Tempora illo magnam nesciunt quaerat nobis eligendi accusamus nam, quas esse error, aspernatur deserunt asperiores!</p>
+            <p className='card_text'>Set deadlines and organize your schedule. Our tool helps you prioritize the most urgent tasks so you never miss a delivery.</p>
         </div>
       </div>
     </div>
