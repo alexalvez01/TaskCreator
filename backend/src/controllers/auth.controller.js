@@ -6,10 +6,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 function createToken(user) {
+  const secret = process.env.JWT_SECRET || "taskcreator_secret_key_2026";
+  const expires = process.env.JWT_EXPIRES || "24h";
+  
   return jwt.sign(
     { id: user.id },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES }
+    secret,
+    { expiresIn: expires }
   );
 }
 
@@ -50,6 +53,7 @@ export async function register(req, res) {
       },
     });
   } catch (error) {
+    console.error("DETALLE ERROR REGISTER:", error);
     res.status(500).json({ error: "Error en register" });
   }
 }
@@ -88,6 +92,7 @@ export async function login(req, res) {
       },
     });
   } catch (error) {
+    console.error("DETALLE ERROR LOGIN:", error);
     res.status(500).json({ error: "Error en login" });
   }
 }
