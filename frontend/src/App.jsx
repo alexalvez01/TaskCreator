@@ -1,5 +1,6 @@
-import {BrowserRouter,Route,Routes, useLocation} from 'react-router-dom'
-import { useEffect } from 'react'
+import {BrowserRouter,Route,Routes, useLocation, Navigate} from 'react-router-dom'
+import { useEffect, useContext } from 'react'
+import { MainContext } from './contexts/MainContext'
 import MainPage from './pages/MainPage'
 import TaskPage from './pages/TaskPage'
 
@@ -24,13 +25,32 @@ function ScrollToTop() {
   return null;
 }
 
+function ProtectedRoute({ children }) {
+  const { user, isLoading } = useContext(MainContext);
+
+  if (isLoading) return <div style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#131313", color: "white" }}>Loading...</div>;
+
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+}
+
 function App(){
   return ( 
     <BrowserRouter>
       <ScrollToTop/>
       <Routes>
         <Route path='/' element={<MainPage/>}></Route>
-        <Route path='/tasks' element={<TaskPage/>}></Route>
+        <Route 
+          path='/tasks' 
+          element={
+            <ProtectedRoute>
+              <TaskPage/>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )
