@@ -18,7 +18,7 @@ export function MainContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
 
-  const API = "http://localhost:3000";
+  const API = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   const registerUser = async ({ username, email, password }) => {
     const res = await fetch(`${API}/auth/register`, {
