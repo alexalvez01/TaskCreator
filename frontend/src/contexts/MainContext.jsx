@@ -18,6 +18,7 @@ export function MainContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [authMessage, setAuthMessage] = useState("");
 
   let apiBase = (import.meta.env.VITE_API_URL || "http://localhost:3000").trim();
   
@@ -173,6 +174,8 @@ export function MainContextProvider({ children }) {
         deleteTask,
         toggleTask,
         isLoading,
+        authMessage,
+        setAuthMessage,
       }}
     >
       {children}

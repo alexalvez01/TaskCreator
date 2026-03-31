@@ -102,7 +102,17 @@ function Header() {
             <Link to="/#about" className="nav_item" onClick={handleAboutClick}>
               About
             </Link>
-            <Link to="/tasks" className="nav_item">
+            <Link 
+              to="/tasks" 
+              className="nav_item"
+              onClick={(e) => {
+                if (!user) {
+                  e.preventDefault();
+                  setAuthMessage("You need to login to manage your tasks");
+                  setModalWindow(true);
+                }
+              }}
+            >
               Start
             </Link>
           </div>

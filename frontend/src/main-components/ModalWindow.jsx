@@ -10,7 +10,9 @@ function ModalWindow() {
         loginUser,
         registerUser,
         isRegisterMode,
-        setIsRegisterMode
+        setIsRegisterMode,
+        authMessage,
+        setAuthMessage
     } = useContext(MainContext)
 
     const [loginForm, setLoginForm] = useState({
@@ -29,6 +31,7 @@ function ModalWindow() {
     const handleCloseButton = () => {
         setModalWindow(false);
         setError("");
+        setAuthMessage("");
     };
 
     const handleSwitchForm = () => {
@@ -62,6 +65,7 @@ function ModalWindow() {
                 {!isRegisterMode && (
                     <div className='login_container login_container_active'>
                         <div className='input_container'>
+                            {authMessage && <p className="auth_required_msg">{authMessage}</p>}
                             <h2>Login</h2>
 
                             <form className="login_form" onSubmit={handleLoginSubmit}>
