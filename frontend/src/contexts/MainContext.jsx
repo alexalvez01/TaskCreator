@@ -18,11 +18,18 @@ export function MainContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
 
-  let apiBase = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  let apiBase = (import.meta.env.VITE_API_URL || "http://localhost:3000").trim();
+  
+  if (apiBase.endsWith('/')) {
+    apiBase = apiBase.slice(0, -1);
+  }
+
   if (apiBase && !apiBase.startsWith('http')) {
     apiBase = `https://${apiBase}`;
   }
+  
   const API = apiBase;
+  console.log("Connect to API:", API);
 
   const registerUser = async ({ username, email, password }) => {
     const res = await fetch(`${API}/auth/register`, {

@@ -15,15 +15,26 @@ app.use(express.json());
 app.use(cookieParser());
 
 // CORS — NECESARIO PARA QUE FUNCIONE LOGIN/REGISTER EN FRONTEND
-let frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+let frontendUrl = (process.env.FRONTEND_URL || "http://localhost:5173").trim();
 if (frontendUrl && !frontendUrl.startsWith('http')) {
   frontendUrl = `https://${frontendUrl}`;
 }
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  frontendUrl
+];
+
 app.use(
   cors({
-    origin: frontendUrl,
-    credentials: true
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 
