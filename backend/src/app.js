@@ -22,6 +22,11 @@ app.use(
   })
 );
 
+// RUTA DE BIENVENIDA / HEALTH CHECK
+app.get("/", (req, res) => {
+  res.send("API de TaskCreator funcionando correctamente 🚀");
+});
+
 // RUTAS
 app.use("/auth", authRoutes);
 app.use("/tasks", taskRoutes);
