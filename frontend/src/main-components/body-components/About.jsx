@@ -29,11 +29,11 @@ function About() {
   return (
     <div className={isDark?"about_container about_dark":"about_container"} id="about" ref={containerRef}>
       <div className={`about_text ${isVisible ? 'show' : ''}`}>
-        <h2>Organize your team's task list and increase productivity</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus corrupti facere vel sit earum laborum id nisi non? Expedita aperiam accusantium, facilis accusamus aliquam aut ullam quibusdam ipsum impedit excepturi!</p>
+        <h2>Elevate Your Productivity with TaskCreator</h2>
+        <p>Empower your workflow with a seamless, glass-morphism inspired interface designed for modern collaboration. Track deadlines, synchronize team efforts, and transform complex projects into achievable milestones with our state-of-the-art task management system.</p>
       </div>
       <div className={`${isDark?"about_image_container about_image_container_dark":"about_image_container"} ${isVisible ? 'show' : ''}`}>
-        <img src="/images/page.png" alt="" />
+        <img src="/images/about_illustration.png" alt="Task Management Illustration" />
       </div>
 
     </div>

@@ -32,21 +32,21 @@ function Cards() {
         <h2>The benefits of using this tool</h2>
       </div>
       <div className='card_container'>
-        <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "")}>
+        <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "") + " hover-lift"}>
             <div className='card_header'>
               <h3 className='card_title'>Organize your task list</h3>
               <img src="/images/tasklist.png" alt="task list" className='card_icon' />
             </div>
             <p className='card_text'>Keep your to-dos under control with our intuitive interface. Classify, edit, and manage your daily tasks efficiently in one place.</p>
         </div>
-        <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "")}>
+        <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "") + " hover-lift"}>
             <div className='card_header'>
               <h3 className='card_title'>Add details to each task</h3>
               <img src="/images/details.png" alt="written book" className='card_icon' />
             </div>
             <p className='card_text'>Never lose sight of important information. Add notes and detailed descriptions to every task to ensure perfect results for your projects.</p>
         </div>
-        <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "")}>
+        <div className={(isDark?"card card_dark ":"card ") + (isVisible ? "visible" : "") + " hover-lift"}>
             <div className='card_header'>
               <h3 className='card_title'>Manage your deadlines</h3>
               <img src="/images/time-date.png" alt="the date on the calendary" className='card_icon' />

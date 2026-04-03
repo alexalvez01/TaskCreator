@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon, faBars, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
-  const { isDark, setIsDark, isModalWindow, setModalWindow, user, logoutUser } =
+  const { isDark, setIsDark, isModalWindow, setModalWindow, user, logoutUser, setAuthMessage } =
     useContext(MainContext);
     
   const [isScrolled, setIsScrolled] = useState(false);

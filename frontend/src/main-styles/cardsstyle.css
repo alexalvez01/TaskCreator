@@ -1,7 +1,7 @@
 .information_cards_container{
-    min-height: 600px;
-    background-color: #c7c7c7;
-    color: #131313;
+    min-height: 700px;
+    background-color: var(--bg-light);
+    color: var(--text-light);
     min-width: 100%;
     display: flex;
     flex-flow: column nowrap;
@@ -10,14 +10,12 @@
     font-size: 20px;
     font-family: inherit;
     text-align: center;
-    transition: background .4s, color .4s;
-
+    transition: var(--transition-smooth);
+    padding: 80px 0;
 }
 .container_dark{
-    background-color: #0d0d0d;
-    color: #c4c4c4;
-    transition: background .4s, color .4s;
-
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
 }
 .text_container{
     min-width: 100%;
@@ -51,27 +49,35 @@
     display: flex;
     flex-flow: column nowrap;
     max-width: 400px;
-    min-height: 300px;
-    background-color: #d4d1d1;
-    color: #131313;
+    min-height: 350px;
+    background: var(--card-light);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    color: var(--text-light);
     text-align: center;
-    padding: 10px 10px;
-    border-radius: 6px;
-    box-shadow: 0 0 15px #0003;
-    transition: background .4s, color .4s, scale .4s;
+    user-select: none;
+    padding: 30px 20px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-premium);
+    transition: var(--transition-smooth);
     opacity: 0;
 }
+
 .card.visible {
     animation: slideUp 0.6s ease-out forwards;
 }
+
 .card:nth-child(1).visible { animation-delay: 0.1s; }
 .card:nth-child(2).visible { animation-delay: 0.25s; }
 .card:nth-child(3).visible { animation-delay: 0.4s; }
 
 .card_dark{
-    background-color: #1e1e1e;
-    color: #c4c4c4;
-    transition: background .4s, color .4s, scale .4s;
+    background: var(--card-dark);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border-dark);
+    color: var(--text-dark);
 }
 
 .card:first-child .card_header{
@@ -95,11 +101,13 @@
     border-bottom: 1px solid #901919;
 }
 .card:hover{
-    box-shadow: 0 0 20px #0004;
-    scale: 1.1;
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgba(99, 102, 241, 0.25);
+    border-color: var(--primary);
 }
 .card_dark:hover{
-    box-shadow: 0 0 20px #ddd4;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    border-color: var(--primary);
 }
 .card_header{
     display: flex;

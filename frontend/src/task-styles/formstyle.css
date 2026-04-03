@@ -47,7 +47,6 @@
 .close_btn:hover {
   background: var(--danger);
   color: white;
-  transform: rotate(90deg);
 }
 
 .task_form_content {
